@@ -17,7 +17,7 @@ func main() {
 		httpAddress    = flag.String("http-address", "127.0.0.1:8080", "The <addr>:<port> to listen on for HTTP clients..")
 		pong           = flag.String("pong", "pong", "The ping response.")
 		headerName     = flag.String("header", "X-Auth", "The encrypted token header name.")
-		basePath       = flag.String("base-path", "/proxy", "The base path of the proxy.")
+		basePath       = flag.String("base-path", "", "The base path of the proxy.")
 		accessTokenURL = flag.String("access-token-url", "", "The api endpoint used to create access token and refresh the token.")
 		key            = flag.String("key", "", "The 32 bytes encryption key.")
 	)
