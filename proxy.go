@@ -128,6 +128,14 @@ type TokenTransport struct {
 func (t *TokenTransport) RoundTrip(request *http.Request) (*http.Response, error) {
 	response, err := http.DefaultTransport.RoundTrip(request)
 
+	if response.StatusCode >= 400 {
+		response.Body = ioutil.NopCloser(bytes.NewBufferString(""))
+		response.ContentLength = int64(0)
+		response.StatusCode = 403
+		response.Status = "403 Forbidden"
+		return response, err
+	}
+
 	body, _ := ioutil.ReadAll(response.Body)
 
 	var at AccessToken
